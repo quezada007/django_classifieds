@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Classified
+
+
+@admin.register(Classified)
+class ClassifiedAdmin(admin.ModelAdmin):
+    list_display = ['category', 'first_name', 'last_name', 'location', 'title', 'price']
