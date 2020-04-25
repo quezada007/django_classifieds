@@ -25,7 +25,7 @@ class Classified(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
     description = models.TextField()
-    submission_date = models.DateTimeField()
+    submission_date = models.DateTimeField(auto_now_add=True)
     days_listed = models.CharField(choices=DAYS_LISTED, max_length=2)
     pictures = models.ManyToManyField('Pictures', blank=True)
 
