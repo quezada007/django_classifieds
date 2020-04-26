@@ -20,5 +20,6 @@ from classifieds import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('classifieds/<int:id>/', views.classified_detail, name='classified_detail')
+    path('classifieds/<int:id>/', views.classified_detail, name='classified_detail'),
+    path('add-classified/', views.classified_add, name='classified_add'),
 ]
