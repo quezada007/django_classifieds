@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.http import Http404
 
 from .models import Classified
+from .forms import ClassifiedForm
 
 
 def home(request):
@@ -16,3 +17,18 @@ def classified_detail(request, id):
     except Classified.DoesNotExist:
         raise Http404('Classified Not Found')
     return render(request, 'classified_detail.html', {'classified': classified})
+
+
+def classified_add(request):
+    if request.method == 'POST':
+        filled_form = ClassifiedForm(request.POST)
+        if filled_form.is_valid():
+            filled_form.save()
+            note = 'Thanks for adding a classified add!'
+            filled_form = ClassifiedForm()
+        else:
+            note = 'Please update the errors and try again'
+        return render(request, 'classified_add.html', {'form': filled_form, 'note': note})
+    else:
+        form = ClassifiedForm()
+        return render(request, 'classified_add.html', {'form': form})
