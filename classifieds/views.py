@@ -7,7 +7,7 @@ from .forms import ClassifiedForm
 
 
 def home(request):
-    classifieds = Classified.objects.all()
+    classifieds = Classified.objects.all().order_by('-submission_date')
     return render(request, 'home.html', {'classifieds': classifieds})
 
 
@@ -21,10 +21,10 @@ def classified_detail(request, id):
 
 def classified_add(request):
     if request.method == 'POST':
-        filled_form = ClassifiedForm(request.POST)
+        filled_form = ClassifiedForm(request.POST, request.FILES)
         if filled_form.is_valid():
             filled_form.save()
-            note = 'Thanks for adding a classified add!'
+            note = 'Thanks for adding a classified ad!'
             filled_form = ClassifiedForm()
         else:
             note = 'Please update the errors and try again'

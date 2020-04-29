@@ -5,9 +5,14 @@
 {% block content %}
    <div class="container">
       <div class="row">
-         <div class="col-12"><h1 class="display-4">{{ classified.title }}</h1></div>
-         <div class="col-sm-6">
+         <div class="col-12">
+            <h1 class="display-4">{{ classified.title }}</h1>
             <a href="{% url 'home' %}" class="btn btn-primary btn-sm rounded-pill mb-2">&#8592; Back</a>
+         </div>
+         <div class="col-sm-6">
+            <img class="img-fluid" src="/media/{{ classified.pictures }}" alt="{{ classified.title }}">
+         </div>
+         <div class="col-sm-6">
             <p><strong>Category:</strong> {{ classified.get_category_display }}</p>
             <p><strong>Price: </strong> ${{ classified.price }}</p>
             <p><strong>Contact: </strong> {{ classified.first_name }} {{ classified.last_name }}</p>
@@ -16,7 +21,6 @@
             <p><strong>Description:</strong></p>
             <div>{{ classified.description }}</div>
          </div>
-         <div class="col-sm-6"></div>
       </div>
    </div>
 
