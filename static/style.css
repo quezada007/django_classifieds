@@ -5,6 +5,11 @@ header {
     font-size: 30px;
 }
 
+header a,
+header a:hover {
+    color: #FFF;
+}
+
 main {
     padding: 40px 0;
 }
